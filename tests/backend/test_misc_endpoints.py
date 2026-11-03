@@ -65,23 +65,20 @@ class TestDemandEndpoints:
                 assert percent_change < 2.0, \
                     f"Item {item['item_name']} has {percent_change:.2f}% change, expected < 2%"
 
-    def test_demand_forecast_has_new_items(self, client):
-        """Test that new demand forecast items exist."""
-        response = client.get("/api/demand")
-        data = response.json()
+    def test_demand_forecasts_match_inventory_with_lead_time(self, client):
+        """Every forecast SKU must exist in inventory and carry a positive lead time.
 
-        # Check for the new items we added
-        skus = [item["item_sku"] for item in data]
+        Restocking joins forecasts to inventory by SKU, so an unmatched SKU
+        would have no unit cost or on-hand stock and be silently dropped.
+        """
+        forecasts = client.get("/api/demand").json()
+        inventory_skus = {item["sku"] for item in client.get("/api/inventory").json()}
 
-        # Should have Temperature Sensor Module and Logic Controller Board
-        assert "SNR-420" in skus, "Missing Temperature Sensor Module"
-        assert "CTL-330" in skus, "Missing Logic Controller Board"
-
-        # Verify they are marked as stable
-        for item in data:
-            if item["item_sku"] in ["SNR-420", "CTL-330"]:
-                assert item["trend"].lower() == "stable", \
-                    f"New item {item['item_name']} should have stable trend"
+        assert len(forecasts) > 0
+        for forecast in forecasts:
+            assert forecast["item_sku"] in inventory_skus, \
+                f"Forecast SKU {forecast['item_sku']} not found in inventory"
+            assert forecast["lead_time_days"] > 0
 
 
 class TestBacklogEndpoints:

@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: generic-app-navbar-component
+expected_outcome: |
+  In a Vue 3 app whose nav lives in components/AppNavbar.vue and whose global CSS lives in
+  src/assets/main.css, the fixed top navbar becomes a left sidebar with all four links and
+  icons, the avatar menu survives, every layout offset tied to the 64px navbar is fixed
+  (including the .page top padding and the Projects toolbar/filters), the modal stays above
+  the sidebar, tokens keep the app's indigo palette, and the app builds.
+context:
+  scaffold_script: place-files.sh
