@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: redesign-inventory-app
+expected_outcome: |
+  The inventory app's top tab bar in client/src/App.vue is replaced by a fixed left sidebar
+  listing every existing nav link with an inline SVG icon; the language switcher and profile
+  menu still render; a :root design-token block built on the project's slate palette exists;
+  the filter bar no longer depends on the old 70px header height; views change only in their
+  style blocks; the client builds; and the report includes before/after audit counts.

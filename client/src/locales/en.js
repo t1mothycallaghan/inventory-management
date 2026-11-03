@@ -6,8 +6,11 @@ export default {
     orders: 'Orders',
     finance: 'Finance',
     demandForecast: 'Demand Forecast',
+    restocking: 'Restocking',
     companyName: 'Catalyst Components',
-    subtitle: 'Inventory Management System'
+    subtitle: 'Inventory Management System',
+    collapseSidebar: 'Collapse sidebar',
+    expandSidebar: 'Expand sidebar'
   },
 
   // Dashboard
@@ -106,6 +109,8 @@ export default {
     title: 'Orders',
     description: 'View and manage customer orders',
     allOrders: 'All Orders',
+    submittedOrders: 'Submitted Orders',
+    noSubmittedOrders: 'No restock orders submitted yet',
     totalOrders: 'Total Orders',
     totalRevenue: 'Total Revenue',
     avgOrderValue: 'Avg Order Value',
@@ -125,6 +130,8 @@ export default {
       totalValue: 'Total Value',
       status: 'Status',
       expectedDelivery: 'Expected Delivery',
+      leadTime: 'Lead Time (Days)',
+      submittedDate: 'Submitted Date',
       actualDelivery: 'Actual Delivery'
     }
   },
@@ -188,6 +195,43 @@ export default {
     }
   },
 
+  // Restocking
+  restocking: {
+    title: 'Restocking',
+    description: 'Plan restock purchases within a budget, ranked by priority',
+    budget: 'Budget',
+    budgetInput: 'Budget amount',
+    sliderMin: 'Min',
+    sliderMax: 'Full restock',
+    stats: {
+      budget: 'Budget',
+      recommended: 'Selected Total',
+      remaining: 'Remaining',
+      itemsSelected: 'Items Selected'
+    },
+    recommendations: 'Recommendations',
+    table: {
+      include: 'Include',
+      sku: 'SKU',
+      name: 'Item Name',
+      warehouse: 'Warehouse',
+      onHand: 'On Hand',
+      forecast: 'Forecast',
+      trend: 'Trend',
+      unitCost: 'Unit Cost',
+      leadTime: 'Lead Time (Days)',
+      quantity: 'Quantity',
+      lineTotal: 'Line Total'
+    },
+    placeOrder: 'Place Order',
+    placing: 'Placing...',
+    overBudget: 'Selected total exceeds the budget. Reduce quantities or raise the budget.',
+    success: 'Order {orderNumber} submitted.',
+    viewOrders: 'View orders',
+    noItems: 'No restocking recommendations for the selected filters',
+    failed: 'Failed to place order'
+  },
+
   // Filters
   filters: {
     timePeriod: 'Time Period',
@@ -201,6 +245,7 @@ export default {
   // Statuses
   status: {
     delivered: 'Delivered',
+    submitted: 'Submitted',
     shipped: 'Shipped',
     processing: 'Processing',
     backordered: 'Backordered',
@@ -309,6 +354,38 @@ export default {
     english: 'English',
     japanese: 'Japanese',
     selectLanguage: 'Select Language'
+  },
+
+  // Purchase Orders
+  purchaseOrder: {
+    create: 'Create PO',
+    view: 'View PO',
+    createTitle: 'Create Purchase Order',
+    viewTitle: 'Purchase Order Details',
+    sku: 'SKU',
+    shortage: 'Shortage',
+    units: 'units',
+    supplierName: 'Supplier Name',
+    quantity: 'Quantity',
+    unitCost: 'Unit Cost',
+    expectedDelivery: 'Expected Delivery Date',
+    notes: 'Notes (optional)',
+    poId: 'PO ID',
+    totalCost: 'Total Cost',
+    status: 'Status',
+    createdDate: 'Created Date',
+    submit: 'Create Purchase Order',
+    submitting: 'Creating...',
+    errors: {
+      supplierRequired: 'Supplier name is required',
+      quantityInvalid: 'Quantity must be a whole number greater than 0',
+      unitCostInvalid: 'Unit cost must be greater than 0',
+      dateRequired: 'Expected delivery date is required',
+      alreadyExists: 'A purchase order already exists for this item',
+      notFound: 'Backlog item or purchase order not found',
+      createFailed: 'Failed to create purchase order',
+      loadFailed: 'Failed to load purchase order'
+    }
   },
 
   // Common
